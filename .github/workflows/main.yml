@@ -2,7 +2,7 @@
 
 on:
   workflow_run:
-    workflows: [slack_test]
+    workflows: [Slack alert for dev branch]
     types: [completed]
 
 jobs:
