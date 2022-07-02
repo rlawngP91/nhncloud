@@ -1,8 +1,8 @@
-# This is a basic workflow to help you get started with Actions
+name: check_success
 
 on:
   workflow_run:
-    workflows: [Slack alert for dev branch]
+    workflows: [deploy]
     types: [completed]
 
 jobs:
@@ -25,7 +25,7 @@ jobs:
       - name: action-slack
         uses: 8398a7/action-slack@v3
         with:
-          status: ${{ job.status }}
+          status: 'failure'
           author_name: Sloth Backend - dev
           fields: repo,commit,message,author # action,eventName,ref,workflow,job,took 추가할 수 있음
           mention: here
