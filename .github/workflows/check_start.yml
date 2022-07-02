@@ -1,16 +1,12 @@
 
-name: Slack alert for dev branch
+name: check_start
 
 on:
-  push:
-    branches:
-      - dev
-      - feature/*
+  workflow_run:
+    workflows: [deploy]
+    types:
+      - requested
 
-  pull_request:
-    branches:
-      - dev
-      - feature/*
 
 jobs:
   build:
@@ -24,19 +20,6 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-          
-      - uses: actions/checkout@v2
-      - name: Run scripts in server
-        uses: appleboy/ssh-action@master
-        with:
-          key: ${{ secrets.SSH_KEY }}
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          script: |
-            cd nhncloud
-            git reset --hard
-            git fetch
-            git pull
 
       - name: action-slack
         uses: 8398a7/action-slack@v3
