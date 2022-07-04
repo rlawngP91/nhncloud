@@ -79,16 +79,6 @@ jobs:
                 fields: [{
                   title: 'Error Msg',
                   value: 'Error Message'.toLowerCase(),
-                  short: true
-                },
-                {
-                  title: 'reverse',
-                  value: 'gnirts esrever'.split('').reverse().join(''),
-                  short: true
-                },
-                {
-                  title: 'long title1',
-                  value: 'long value1',
                   short: false
                 }],
                 actions: [{
