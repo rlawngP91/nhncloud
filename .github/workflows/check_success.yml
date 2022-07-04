@@ -29,7 +29,7 @@ jobs:
                 fallback: 'fallback',
                 color: 'good',
                 title: 'CI Result',
-                text: 'Failed',
+                text: 'Successed',
                 fields: [{
                   title: 'lower case',
                   value: 'LOWER CASE CHECK'.toLowerCase(),
@@ -75,7 +75,7 @@ jobs:
                 fallback: 'fallback',
                 color: 'bad',
                 title: 'CI Result',
-                text: 'Succeeded',
+                text: 'Failed',
                 fields: [{
                   title: 'Error Msg',
                   value: 'Error Message'.toLowerCase(),
