@@ -31,19 +31,9 @@ jobs:
                 title: 'CI Result',
                 text: 'Successed',
                 fields: [{
-                  title: 'lower case',
-                  value: 'LOWER CASE CHECK'.toLowerCase(),
+                  title: 'Error Msg',
+                  value: 'null',
                   short: true
-                },
-                {
-                  title: 'reverse',
-                  value: 'gnirts esrever'.split('').reverse().join(''),
-                  short: true
-                },
-                {
-                  title: 'long title1',
-                  value: 'long value1',
-                  short: false
                 }],
                 actions: [{
                 }]
