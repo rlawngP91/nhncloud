@@ -23,21 +23,37 @@ jobs:
           distribution: 'adopt'
 
       - name: action-slack
-        uses: 8398a7/action-slack@v3
+        uses: 8398a7/action-slack@v2
         with:
-          status: 'failure'
-          author_name: Check_success
-          fields: repo,commit,message,author # action,eventName,ref,workflow,job,took 추가할 수 있음
-          custom_payload: |
+          status: custom
+          payload: |
             {
-            attachments: [{
-              text: `${process.env.AS_WORKFLOW}\n${process.env.AS_JOB} 
-              (${process.env.AS_COMMIT}) of ${process.env.AS_REPO}@${process.env.AS_REF} by ${process.env.AS_AUTHOR} 
-              ${{ job.status }} in ${process.env.AS_TOOK}`
-            }]
+              text: "deploy failed!",
+              attachments: [{
+                "author_name": "8398a7@action-slack",
+                fallback: 'fallback',
+                color: 'good',
+                title: 'CI Result',
+                text: 'Succeeded',
+                fields: [{
+                  title: 'lower case',
+                  value: 'LOWER CASE CHECK'.toLowerCase(),
+                  short: true
+                },
+                {
+                  title: 'reverse',
+                  value: 'gnirts esrever'.split('').reverse().join(''),
+                  short: true
+                },
+                {
+                  title: 'long title1',
+                  value: 'long value1',
+                  short: false
+                }],
+                actions: [{
+                }]
+              }]
             }
-          mention: here
-          if_mention: failure,cancelled
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
         if: always() 
